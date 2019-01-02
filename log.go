@@ -287,6 +287,16 @@ func (l *logger) logf(t LogType, format string, v ...interface{}) {
 	l._log.Output(4, s)
 }
 
+func (l *logger) Panic(v ...interface{}) {
+	l.log(LOG_FATAL, v...)
+	os.Exit(-1)
+}
+
+func (l *logger) Panicf(format string, v ...interface{}) {
+	l.logf(LOG_FATAL, format, v...)
+	os.Exit(-1)
+}
+
 func (l *logger) Fatal(v ...interface{}) {
 	l.log(LOG_FATAL, v...)
 	os.Exit(-1)
@@ -303,6 +313,14 @@ func (l *logger) Error(v ...interface{}) {
 
 func (l *logger) Errorf(format string, v ...interface{}) {
 	l.logf(LOG_ERROR, format, v...)
+}
+
+func (l *logger) Warn(v ...interface{}) {
+	l.log(LOG_WARNING, v...)
+}
+
+func (l *logger) Warnf(format string, v ...interface{}) {
+	l.logf(LOG_WARNING, format, v...)
 }
 
 func (l *logger) Warning(v ...interface{}) {
