@@ -390,7 +390,7 @@ func genHourTime(t time.Time) string {
 }
 
 func New() *logger {
-	return Newlogger(os.Stderr, "")
+	return Newlogger(os.Stdout, "")
 }
 
 func Newlogger(w io.Writer, prefix string) *logger {
